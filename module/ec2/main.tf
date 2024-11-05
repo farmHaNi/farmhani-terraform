@@ -6,9 +6,15 @@ data "aws_ami" "python_ami" {
     }
 }
 
+data "aws_key_pair" "default_key_pair" {
+  key_name           = "default_key_pair"
+  include_public_key = true
+}
+
 # Network Interface
-resource "aws_instance" "myec2" {
+resource "aws_instance" "backend" {
     ami = data.aws_ami.python_ami.id
+    key_name = data.aws_key_pair.default_key_pair.key_name
     instance_type = var.ami_worker_node_tier
     availability_zone = var.az_a
     security_groups = [var.web_sg_id]
