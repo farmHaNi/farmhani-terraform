@@ -14,9 +14,8 @@ variable "web_sg_id" {
     type = string
 }
 
-variable "private_subnet_id" {
+variable "public_subnet_a_id" {
     type = string
-    description = "퍼블릭 서브넷 아이디"
 }
 
 variable "az_a" {
