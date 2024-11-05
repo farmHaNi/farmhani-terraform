@@ -25,6 +25,16 @@ module "security-group" {
     source = "./module/network/security-group"
     web_vpc_id = module.vpc.web_vpc_id
     web_vpc_cidr_block = module.vpc.web_vpc_cidr_block
+    private_subnet_a_id = module.subnet.private_subnet_a.id
+    private_subnet_c_id = module.subnet.private_subnet_c.id 
+}
+
+module "database" {
+    source = "./module/database"
+    private_subnet_a_id = module.subnet.private_subnet_a.id
+    private_subnet_c_id = module.subnet.private_subnet_c.id
+    db_security_group_name = module.security-group.sg_for_rds_id
+    rds_subnet_group_id = module.subnet.rds_subnet_group_id
 }
 
 module "subnet" {
