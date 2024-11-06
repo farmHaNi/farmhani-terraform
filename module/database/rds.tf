@@ -7,7 +7,8 @@ resource "aws_db_instance" "main" {
   username             = var.username             
   password             = var.password             
   parameter_group_name = var.parameter_group_name 
-  skip_final_snapshot  = var.skip_final_snapshot 
+  skip_final_snapshot  = var.skip_final_snapshot
+  availability_zone    = var.rds_instance_az
   multi_az             = false
   db_subnet_group_name = var.rds_subnet_group_id
 

@@ -1,3 +1,8 @@
+variable "rds_instance_az" {
+  type = string
+  default = "ap-northeast-2a"
+}
+
 variable "private_subnet_a_id" {
   type = string
 }
@@ -15,7 +20,7 @@ variable "allocated_storage" {
 variable "db_name" {
   type        = string
   description = "The name of the database"
-  default = "mydb"
+  default = "farmHaNiDB"
 }
 
 variable "engine" {
@@ -39,14 +44,15 @@ variable "instance_class" {
 variable "username" {
   type        = string
   description = "The master username for the database"
-  default = "foo"
+  default = "root"
+  sensitive = true
 }
 
 variable "password" {
   type        = string
-  description = "The master password for the database"
+  description = "DB 비밀번호인데 일단은 간단하게 설정해놓고 나중에 Parameter Store나 Secret Manager로 관리할 예정"
+  default = "123401234"
   sensitive   = true
-  default = "foobarbaz"
 }
 
 variable "parameter_group_name" {
