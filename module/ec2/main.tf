@@ -2,7 +2,7 @@ data "aws_ami" "python_ami" {
     most_recent = true
     filter {
         name = "name"
-        values = ["python*"]
+        values = ["docker-python-user-backend"]
     }
 }
 
